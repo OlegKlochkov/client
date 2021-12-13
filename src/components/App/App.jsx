@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from "../Login/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../../actions/user";
+import MainPage from "../MainPage/MainPage";
 
 
 function App() {
@@ -18,12 +19,11 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar />
-        {!isAuth &&
           <Routes>
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login />} />
+            {!isAuth && <Route path="/registration" element={<Registration />} />}
+            {!isAuth && <Route path="/login" element={<Login />} />}
+            <Route path="/" element={<MainPage />} />
           </Routes>
-        }
       </div>
     </BrowserRouter>
   );

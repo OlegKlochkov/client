@@ -1,22 +1,23 @@
 import axios from 'axios'
-import { setUser } from '../reducers/userReducers'
-export const registration = async (email, password, name) => {
+import { get_products_reducer, setUser} from '../reducers/userReducers'
+export const registration = async (email, password, name, second_name) => {
     try {
-        const response = await axios.post('http://localhost:5000/api/auth/registration?content-type=application/json; charset=utf-8', {
+        const response = await axios.post('http://localhost:5000/registration?content-type=application/json; charset=utf-8', {
             email,
             password,
-            name
+            name,
+            second_name
         })
-        alert(response.data)
+        console.log(response.data)
     } catch (e) {
-        alert(e)
+        console.log(e)
     }
 }
 
 export const login = (email, password) => {
     return async dispatch => {
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login?content-type=application/json; charset=utf-8', {
+            const response = await axios.post('http://localhost:5000/login?content-type=application/json; charset=utf-8', {
                 email,
                 password
             })
@@ -24,23 +25,36 @@ export const login = (email, password) => {
             localStorage.setItem('token', response.data.token)
             console.log(response.data)
         } catch (e) {
-            alert(e)
+            console.log(e)
         }
     }
 }
 
-export const auth = (email, password) => {
+export const auth = () => {
     return async dispatch => {
         try {
-            const response = await axios.get('http://localhost:5000/api/auth/auth?content-type=application/json; charset=utf-8',
+            const response = await axios.get('http://localhost:5000/auth?content-type=application/json; charset=utf-8',
                 { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
             )
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
             console.log(response.data)
         } catch (e) {
-            alert(e)
+            console.log(e)
             localStorage.removeItem('token')
+        }
+    }
+}
+
+export const get_products = () => {
+    return async dispatch => {
+        try {
+            const response = await axios.post('http://localhost:5000/get_products?content-type=application/json; charset=utf-8', {
+                
+            })
+            dispatch(get_products_reducer(response.data.products))
+        } catch (e) {
+            console.log(e)
         }
     }
 }
