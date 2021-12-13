@@ -1,0 +1,34 @@
+.auth{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border: 2px;
+    border-radius: 15px;
+    border-color: black;
+    border-style: double;
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+}
+.textAuth{
+    align-self: center;
+    font-size: 20px;
+    margin-top: 10%;
+    margin-bottom: 2%;
+}
+.divButtons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.butAuth1{
+    width: 35%;
+    margin-top: 2%;
+    margin-left: 14%;
+}
+.butAuth2{
+    width: 35%;
+    margin-top: 2%;
+    margin-left: 2%;
+}

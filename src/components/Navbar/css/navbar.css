@@ -1,0 +1,25 @@
+.navbar{
+    display: flex;
+    height: 50px;
+    background-color: white;
+    width: 100%;
+}
+.header{
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 1%;
+    color: black;
+}
+.login{
+    color: black;
+    margin-right: 0;
+    right: 0;
+}
+.registration{
+    color: black;
+    right: 0;
+}
+.container{
+    display: flex;
+    width: 100%;
+}

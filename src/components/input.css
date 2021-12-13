@@ -1,0 +1,20 @@
+.input{
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    background: #ffffff !important;
+    outline: none;
+    color: #cccccc;
+    font-size: 11px;
+    font-family: Tahoma;
+    width: 70%;
+    height: 10%;
+    margin: 5px;
+    align-self: center;
+}
+.input:focus {
+    color: #000000;
+    border: 1px solid #000000
+}
