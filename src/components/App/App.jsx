@@ -7,6 +7,7 @@ import Login from "../Login/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../../actions/user";
 import MainPage from "../MainPage/MainPage";
+import ProductPage from "../ProductPage/ProductPage";
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
             {!isAuth && <Route path="/registration" element={<Registration />} />}
             {!isAuth && <Route path="/login" element={<Login />} />}
             <Route path="/" element={<MainPage />} />
+            <Route path="*" element={<MainPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
           </Routes>
       </div>
     </BrowserRouter>
