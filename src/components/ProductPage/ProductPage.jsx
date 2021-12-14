@@ -1,7 +1,7 @@
 import "./productPage.css"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { add_review, get_product, get_products, get_reviews } from "../../actions/user"
+import { add_review, get_product, get_product_categories, get_reviews } from "../../actions/user"
 import product_logo from "../assets/product_logo.png"
 import { useParams } from "react-router-dom"
 import Input from "../Input"
@@ -15,10 +15,12 @@ const ProductPage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(get_product(id));
-        dispatch(get_reviews(id))
+        dispatch(get_reviews(id));
+        dispatch(get_product_categories(id))
     }, [])
     const product = useSelector(state => state.user.product)
     const reviews = useSelector(state => state.user.reviews)
+    const product_categories = useSelector(state => state.user.product_categories)
     const user_id = useSelector(state => state.user.currentUser.id)
     return (
         <div>
@@ -26,6 +28,13 @@ const ProductPage = () => {
                 <img src={product.img ? product.img : product_logo} alt="productImage" className="productImage" />
                 <div className="productName">{product.name}</div>
                 <div className="productPrice">{product.price}</div>
+                <div className="productCategories">
+                {
+                product_categories.map((event) => (
+                    <div className="productCategory">{event.category_name}</div>
+                ))
+            }
+                </div>
             </div>
             <div className="reviews">
                 {isAuth && 

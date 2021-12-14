@@ -3,6 +3,8 @@ const LOGOUT = 'LOGOUT'
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const GET_PRODUCT = 'GET_PRODUCT'
 const GET_REVIEWS = 'GET_REVIEWS'
+const GET_CATEGORIES = 'GET_CATEGORIES'
+const GET_PRODUCT_CATEGORIES = 'GET_PRODUCT_CATEGORIES'
 
 
 const defaultstate = {
@@ -10,7 +12,9 @@ const defaultstate = {
     isAuth: false,
     products: [],
     product: {},
-    reviews: []
+    reviews: [],
+    categories: [],
+    product_categories: []
 }
 
 export default function userReducers(state = defaultstate, action) {
@@ -43,6 +47,16 @@ export default function userReducers(state = defaultstate, action) {
                 ...state,
                 reviews: action.payload
             }
+        case GET_CATEGORIES:
+            return {
+                ...state,
+                categories: action.payload
+            }
+        case GET_PRODUCT_CATEGORIES:
+            return {
+                ...state,
+                product_categories: action.payload
+            }
         default: return state;
     }
 }
@@ -53,3 +67,5 @@ export const logout = () => ({ type: LOGOUT })
 export const get_products_reducer = products => ({ type: GET_PRODUCTS, payload: products })
 export const get_product_reducer = product => ({ type: GET_PRODUCT, payload: product })
 export const get_reviews_reducer = reviews => ({ type: GET_REVIEWS, payload: reviews })
+export const get_categories_reducer = categories => ({ type: GET_CATEGORIES, payload: categories })
+export const get_product_categories_reducer = product_categories => ({ type: GET_PRODUCT_CATEGORIES, payload: product_categories })

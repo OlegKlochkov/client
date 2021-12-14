@@ -11,7 +11,33 @@
     display: flex;
 }
 
-.mainPage .product{
+.categories{
+    height:100%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 1%;
+
+    border: 1px solid black;
+}
+
+.categoryName{
+    margin: 2%;
+}
+
+.products{
+    height:100%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    border: 1px solid black;
+}
+
+.products .product{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +49,7 @@
     cursor: pointer;
 }
 
-.mainPage .productImage{
+.products .productImage{
     display: flex;
     border: 1px solid black;
     width: 80%;
