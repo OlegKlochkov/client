@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { get_products_reducer, get_product_reducer, setUser} from '../reducers/userReducers'
+import { get_products_reducer, get_product_reducer, get_reviews_reducer, setUser} from '../reducers/userReducers'
 export const registration = async (email, password, name, second_name) => {
     try {
         const response = await axios.post('http://localhost:5000/registration?content-type=application/json; charset=utf-8', {
@@ -69,5 +69,32 @@ export const get_product = (product_id) => {
         } catch (e) {
             console.log(e)
         }
+    }
+}
+
+export const get_reviews = (product_id) => {
+    return async dispatch => {
+        try {
+            const response = await axios.post('http://localhost:5000/get_reviews?content-type=application/json; charset=utf-8', {
+                product_id
+            })
+            dispatch(get_reviews_reducer(response.data.reviews))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export const add_review = async (client_id, product_id, message, rating) => {
+    try {
+        const response = await axios.post('http://localhost:5000/add_review?content-type=application/json; charset=utf-8', {
+            client_id,
+            product_id,
+            message,
+            rating
+        })
+        alert(response.data)
+    } catch (e) {
+        console.log(e)
     }
 }

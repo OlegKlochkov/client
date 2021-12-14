@@ -2,13 +2,15 @@ const SET_USER = 'SET_USER'
 const LOGOUT = 'LOGOUT'
 const GET_PRODUCTS = 'GET_PRODUCTS'
 const GET_PRODUCT = 'GET_PRODUCT'
+const GET_REVIEWS = 'GET_REVIEWS'
 
 
 const defaultstate = {
     currentUser: {},
     isAuth: false,
     products: [],
-    product: {}
+    product: {},
+    reviews: []
 }
 
 export default function userReducers(state = defaultstate, action) {
@@ -36,6 +38,11 @@ export default function userReducers(state = defaultstate, action) {
                 ...state,
                 product: action.payload
             }
+        case GET_REVIEWS:
+            return {
+                ...state,
+                reviews: action.payload
+            }
         default: return state;
     }
 }
@@ -43,5 +50,6 @@ export default function userReducers(state = defaultstate, action) {
 
 export const setUser = user => ({ type: SET_USER, payload: user })
 export const logout = () => ({ type: LOGOUT })
-export const get_products_reducer = products => ({ type: GET_PRODUCTS, payload: products})
+export const get_products_reducer = products => ({ type: GET_PRODUCTS, payload: products })
 export const get_product_reducer = product => ({ type: GET_PRODUCT, payload: product })
+export const get_reviews_reducer = reviews => ({ type: GET_REVIEWS, payload: reviews })

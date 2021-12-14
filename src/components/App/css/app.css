@@ -5,8 +5,11 @@
     color: rgb(63, 63, 63);
 }
 
-body{
+html, body, #root, .App{
     display: flex;
     flex-direction: column;
     background-color: #E9E6E6;
+
+    height: 100%;
+    width: 100%;
 }

@@ -14,7 +14,7 @@ const MainPage = () => {
     const products = useSelector(state => state.user.products)
     console.log(products);
     return (
-        <div>
+        <div className="mainPage">
             {
                 products.map((event) => (
                     <div className="product" onClick={() => navigate("/product/" + event.products_id)}>
