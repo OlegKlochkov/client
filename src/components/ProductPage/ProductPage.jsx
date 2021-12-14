@@ -6,8 +6,10 @@ import product_logo from "../assets/product_logo.png"
 import { useParams } from "react-router-dom"
 import Input from "../Input"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const ProductPage = () => {
+    let navigate = useNavigate()
     const isAuth = useSelector(state => state.user.isAuth)
     const [message, setMessage] = useState('');
     const [rating, setRating] = useState('');
@@ -31,7 +33,7 @@ const ProductPage = () => {
                 <div className="productCategories">
                 {
                 product_categories.map((event) => (
-                    <div className="productCategory">{event.category_name}</div>
+                    <div className="productCategory" onClick={() => navigate("/" + event.category_name)}>{event.category_name}</div>
                 ))
             }
                 </div>
