@@ -20,7 +20,7 @@ const MainPage = () => {
             <div className="categories">
             {
                     categories.map((event) => (
-                        <div className="categoryName">{event.category_name}</div>
+                        <div className="categoryName" onClick={() => navigate("/" + event.category_name)}>{event.category_name}</div>
                     ))
                 }
             </div>

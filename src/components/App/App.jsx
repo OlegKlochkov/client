@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../../actions/user";
 import MainPage from "../MainPage/MainPage";
 import ProductPage from "../ProductPage/ProductPage";
+import CategoryPage from "../CategoryPage/CategoryPage";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="*" element={<MainPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/:category_name" element={<CategoryPage />} />
           </Routes>
       </div>
     </BrowserRouter>
