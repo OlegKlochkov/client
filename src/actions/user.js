@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { get_categories_reducer, get_category_products_reducer, get_products_reducer, get_product_categories_reducer, get_product_reducer, get_reviews_reducer, setUser} from '../reducers/userReducers'
+import { get_categories_reducer, get_category_products_reducer, get_client_reducer, get_products_reducer, get_product_categories_reducer, get_product_reducer, get_reviews_reducer, setUser} from '../reducers/userReducers'
 export const registration = async (email, password, name, second_name) => {
     try {
         const response = await axios.post('http://localhost:5000/registration?content-type=application/json; charset=utf-8', {
@@ -23,7 +23,6 @@ export const login = (email, password) => {
             })
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
-            console.log(response.data)
         } catch (e) {
             console.log(e)
         }
@@ -38,7 +37,6 @@ export const auth = () => {
             )
             dispatch(setUser(response.data.user))
             localStorage.setItem('token', response.data.token)
-            console.log(response.data)
         } catch (e) {
             console.log(e)
             localStorage.removeItem('token')
@@ -132,6 +130,19 @@ export const get_category_products = (category_name) => {
                 category_name
             })
             dispatch(get_category_products_reducer(response.data.category_products))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export const get_client = () => {
+    return async dispatch => {
+        try {
+            const response = await axios.post('http://localhost:5000/get_client?content-type=application/json; charset=utf-8', {
+                token: localStorage.getItem('token')
+            })
+            dispatch(get_client_reducer(response.data.client))
         } catch (e) {
             console.log(e)
         }
