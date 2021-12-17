@@ -1,0 +1,45 @@
+.profilePage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.clientInfoDiv, .changeClientInfo{
+    display: flex;
+    text-align: center;
+}
+
+.clientInfoDiv{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 30%;
+    margin: 1%;
+    padding: 1%;
+    border: 1px solid black;
+}
+
+.clientInfo{
+    width: 100%;
+}
+
+.changeClientInfo{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    
+    height: 40%;
+    width: 100%;
+}
+
+.changeClientInfo .input{
+    height: 100%;
+    font-size: 1.5vh;
+}
+
+.profileButton{
+    border: 0.5px solid gray;
+    border-radius: 30%;
+    padding: 1%;
+}

@@ -14,7 +14,6 @@ const MainPage = () => {
     }, [])
     const products = useSelector(state => state.user.products)
     const categories = useSelector(state => state.user.categories)
-    console.log(products);
     return (
         <div className="mainPage">
             <div className="categories">

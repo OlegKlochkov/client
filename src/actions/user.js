@@ -136,15 +136,33 @@ export const get_category_products = (category_name) => {
     }
 }
 
-export const get_client = () => {
+export const get_client = (_callback) => {
     return async dispatch => {
         try {
             const response = await axios.post('http://localhost:5000/get_client?content-type=application/json; charset=utf-8', {
                 token: localStorage.getItem('token')
             })
             dispatch(get_client_reducer(response.data.client))
+            _callback(response.data.client)
         } catch (e) {
             console.log(e)
         }
+    }
+}
+
+export const update_client = async (name, second_name, third_name, client_address, phone_number) => {
+    try {
+        await axios.post('http://localhost:5000/update_client?content-type=application/json; charset=utf-8', {
+            token: localStorage.getItem('token'),
+            name,
+            second_name,
+            third_name,
+            client_address,
+            phone_number
+        })
+        window.location.reload();
+        console.log('updated client')
+    } catch (e) {
+        console.log(e)
     }
 }
