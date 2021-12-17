@@ -10,6 +10,8 @@ import MainPage from "../MainPage/MainPage";
 import ProductPage from "../ProductPage/ProductPage";
 import CategoryPage from "../CategoryPage/CategoryPage";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
+import ShopsPage from "../ShopsPage/ShopsPage";
+import ShopPage from "../ShopPage/ShopPage";
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/:category_name" element={<CategoryPage />} />
             <Route path="/profile" element={<UserProfilePage />} />
+            <Route path="/shops" element={<ShopsPage />} />
+            <Route path="/shop/:id" element={<ShopPage />} />
           </Routes>
       </div>
     </BrowserRouter>

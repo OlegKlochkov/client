@@ -7,7 +7,8 @@ const GET_CATEGORIES = 'GET_CATEGORIES'
 const GET_PRODUCT_CATEGORIES = 'GET_PRODUCT_CATEGORIES'
 const GET_CATEGORY_PRODUCTS = 'GET_CATEGORY_PRODUCTS'
 const GET_CLIENT = 'GET_CLIENT'
-
+const GET_SHOPS = 'GET_SHOPS'
+const GET_PRODUCTS_IN_SHOP = 'GET_PRODUCTS_IN_SHOP'
 
 const defaultstate = {
     currentUser: {},
@@ -18,7 +19,9 @@ const defaultstate = {
     categories: [],
     product_categories: [],
     category_products: [],
-    client: {}
+    client: {},
+    shops: [],
+    products_in_shop: []
 }
 
 export default function userReducers(state = defaultstate, action) {
@@ -71,6 +74,16 @@ export default function userReducers(state = defaultstate, action) {
                 ...state,
                 client: action.payload
             }
+        case GET_SHOPS:
+            return {
+                ...state,
+                shops: action.payload
+            }
+        case GET_PRODUCTS_IN_SHOP:
+            return {
+                ...state,
+                products_in_shop: action.payload
+            }
         default: return state;
     }
 }
@@ -84,4 +97,6 @@ export const get_reviews_reducer = reviews => ({ type: GET_REVIEWS, payload: rev
 export const get_categories_reducer = categories => ({ type: GET_CATEGORIES, payload: categories })
 export const get_product_categories_reducer = product_categories => ({ type: GET_PRODUCT_CATEGORIES, payload: product_categories })
 export const get_category_products_reducer = category_products => ({ type: GET_CATEGORY_PRODUCTS, payload: category_products })
-export const get_client_reducer = client => ({type: GET_CLIENT, payload: client})
+export const get_client_reducer = client => ({ type: GET_CLIENT, payload: client })
+export const get_shops_reducer = shops => ({ type: GET_SHOPS, payload: shops })
+export const get_products_in_shop_reducer = products_in_shop => ({type: GET_PRODUCTS_IN_SHOP, payload: products_in_shop})

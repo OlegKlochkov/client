@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { get_categories_reducer, get_category_products_reducer, get_client_reducer, get_products_reducer, get_product_categories_reducer, get_product_reducer, get_reviews_reducer, setUser} from '../reducers/userReducers'
+import { get_categories_reducer, get_category_products_reducer, get_client_reducer, get_products_in_shop_reducer, get_products_reducer, get_product_categories_reducer, get_product_reducer, get_reviews_reducer, get_shops_reducer, setUser} from '../reducers/userReducers'
 export const registration = async (email, password, name, second_name) => {
     try {
         const response = await axios.post('http://localhost:5000/registration?content-type=application/json; charset=utf-8', {
@@ -164,5 +164,31 @@ export const update_client = async (name, second_name, third_name, client_addres
         console.log('updated client')
     } catch (e) {
         console.log(e)
+    }
+}
+
+export const get_shops = () => {
+    return async dispatch => {
+        try {
+            const response = await axios.post('http://localhost:5000/get_shops?content-type=application/json; charset=utf-8', {
+                
+            })
+            dispatch(get_shops_reducer(response.data.shops))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export const get_products_in_shop = (shop_id) => {
+    return async dispatch => {
+        try {
+            const response = await axios.post('http://localhost:5000/get_products_in_shop?content-type=application/json; charset=utf-8', {
+                shop_id
+            })
+            dispatch(get_products_in_shop_reducer(response.data.products_in_shop))
+        } catch (e) {
+            console.log(e)
+        }
     }
 }
