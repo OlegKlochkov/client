@@ -83,10 +83,10 @@ export const get_reviews = (product_id) => {
     }
 }
 
-export const add_review = async (client_id, product_id, message, rating) => {
+export const add_review = async (product_id, message, rating) => {
     try {
         const response = await axios.post('http://localhost:5000/add_review?content-type=application/json; charset=utf-8', {
-            client_id,
+            token: localStorage.getItem('token'),
             product_id,
             message,
             rating

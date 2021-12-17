@@ -23,7 +23,6 @@ const ProductPage = () => {
     const product = useSelector(state => state.user.product)
     const reviews = useSelector(state => state.user.reviews)
     const product_categories = useSelector(state => state.user.product_categories)
-    const user_id = useSelector(state => state.user.currentUser.id)
     return (
         <div>
             <div>
@@ -43,7 +42,7 @@ const ProductPage = () => {
                 <div className="addReview">
                 <Input value={message} setValue={setMessage} type="text" placeholder="Введите отзыв" />
                 <Input value={rating} setValue={setRating} type="text" placeholder="Оцените продукт (от 1 до 5)" />
-                <button className="" onClick={() => add_review(user_id, id, message, rating)}>Оставить отзыв</button>
+                <button className="" onClick={() => add_review(id, message, rating)}>Оставить отзыв</button>
                 </div>
                 }
                                 {!isAuth && 
