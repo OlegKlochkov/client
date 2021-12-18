@@ -12,6 +12,7 @@ import CategoryPage from "../CategoryPage/CategoryPage";
 import UserProfilePage from "../UserProfilePage/UserProfilePage";
 import ShopsPage from "../ShopsPage/ShopsPage";
 import ShopPage from "../ShopPage/ShopPage";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/profile" element={<UserProfilePage />} />
             <Route path="/shops" element={<ShopsPage />} />
             <Route path="/shop/:id" element={<ShopPage />} />
+            <Route path="/cart" element={<ShoppingCart />} />
           </Routes>
       </div>
     </BrowserRouter>

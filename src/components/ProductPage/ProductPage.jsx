@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom"
 import Input from "../Input"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import AddToCartButton from "../AddToCartButton"
 
 const ProductPage = () => {
     let navigate = useNavigate()
@@ -36,6 +37,7 @@ const ProductPage = () => {
                 ))
             }
                 </div>
+                <AddToCartButton product={product} />
             </div>
             <div className="reviews">
                 {isAuth && 

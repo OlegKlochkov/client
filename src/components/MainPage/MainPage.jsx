@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { get_categories, get_products } from "../../actions/user"
 import product_logo from "../assets/product_logo.png"
 import { useNavigate } from "react-router-dom"
+import AddToCartButton from "../AddToCartButton"
 
 const MainPage = () => {
     let navigate = useNavigate()
@@ -26,10 +27,12 @@ const MainPage = () => {
             <div className="products">
                 {
                     products.map((event) => (
-                        <div className="product" onClick={() => navigate("/product/" + event.products_id)}>
+                        <div className="product" >
                             <img src={event.img ? event.img : product_logo} alt="productImage" className="productImage" />
                             <div className="productName">{event.name}</div>
                             <div className="productPrice">{event.price}</div>
+                            <div className="productPageRedirect" onClick={() => navigate("/product/" + event.products_id)}>Подробнее</div>
+                            <AddToCartButton product={event} />
                         </div>
                     ))
                 }
