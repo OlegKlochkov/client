@@ -1,18 +1,21 @@
 import "./shoppingCart.css"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import {  } from "../../actions/user"
+import { get_client, get_shops } from "../../actions/user"
 import product_logo from "../assets/product_logo.png"
 import { useNavigate } from "react-router-dom"
-import AddToCartButton from "../AddToCartButton"
 
 const ShoppingCart = () => {
     let navigate = useNavigate()
-/*     const dispatch = useDispatch()
+    const isAuth = useSelector(state => state.user.isAuth);
+    const dispatch = useDispatch()
     useEffect(() => {
-        dispatch()
-    }, []) */
-    
+        dispatch(get_client(function (e){setAddress(e.client_address ? e.client_address : 'не указан')}))
+        dispatch(get_shops())
+    }, [])
+    const shops = useSelector(state => state.user.shops);
+    const [choiceVisible, setChoiceVisible] = useState(false);
+    const [client_address, setAddress] = useState('');
     function getProductsInCart() {
         try {
             return (JSON.parse(localStorage.getItem('cart')))
@@ -51,6 +54,21 @@ const ShoppingCart = () => {
                 ))}
                 {!(products === 'Корзина пустая' || products === null) &&
             <div className="clearCartButton" onClick={() => {localStorage.removeItem('cart'); window.location.reload()}}>Очистить корзину</div>}
+            {isAuth ? 
+            <div className="order">
+                {!client_address === 'не указан' && <div className="createOrderButton">Оформить доставку</div>}
+                <div className="createOrderButton" onClick={() => setChoiceVisible(!choiceVisible)}>Оформить самовывоз</div>
+                {choiceVisible && <div className="shopChoice">
+                    {shops.map((event) => (
+                        <div className="shop">
+                            <div className="shopAddress">{event.shop_address}</div>
+                            <div className="shopWorkingHours">{event.shop_working_hours}</div>
+                            <div className="selectShop">Самовывоз из этого магазина</div>
+                        </div>
+                    ))}
+                    </div>}
+            </div>  : 
+            <div className="">Войдите, чтобы оформить заказ</div>}
         </div>
     )
 }
